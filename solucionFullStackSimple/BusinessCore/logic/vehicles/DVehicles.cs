@@ -13,6 +13,17 @@ namespace BusinessCore.logic.vehicles
             vheicles = new Dictionary<Guid, Vehicle>();
         }
 
+        public bool Member(iConn conn, )
+        {
+            bool existe = false;
+            if (Find(conn, VOIntegrante) != null)
+                existe = true;
+            return existe;
+        }
 
+        public Vehicle Find(iConn conn, )
+        {
+            Vehicle reponse = null;
+        }
     }
 }
