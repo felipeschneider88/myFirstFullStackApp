@@ -8,10 +8,13 @@ namespace BusinessCore.persistence
 {
     class ConnectionManager
     {
-        public SqlConnection Conexion
+        public IConnection Conexion
         {
             get
             {
+                //TODO: Convert to setting based on the current type of connection
+                // SQL Server
+                //PostgresQL
                 string connectionString =
                     ConfigurationManager.ConnectionStrings["ConnectionStringTalentoDB"].ConnectionString;
                 //string connectionString = "Data Source=localhost;Initial Catalog=TalentosDB;Integrated Security=True";
