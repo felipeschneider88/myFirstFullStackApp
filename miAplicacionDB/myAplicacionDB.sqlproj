@@ -57,11 +57,15 @@
   <ItemGroup>
     <Folder Include="Properties" />
     <Folder Include="tablas" />
+    <Folder Include="scripts" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="tablas\vehicles.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="myAplicacionDB.refactorlog" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="scripts\Script.PostDeploymentInserts.sql" />
   </ItemGroup>
 </Project>
