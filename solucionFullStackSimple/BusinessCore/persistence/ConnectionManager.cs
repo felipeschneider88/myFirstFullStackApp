@@ -8,7 +8,7 @@ namespace BusinessCore.persistence
 {
     class ConnectionManager
     {
-        public IConnection Conexion
+        public SqlConnection Conexion
         {
             get
             {

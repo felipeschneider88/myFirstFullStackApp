@@ -2,6 +2,7 @@
 using BusinessCore.value_objects;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Text;
 
 namespace BusinessCore.logic.vehicles
@@ -17,39 +18,32 @@ namespace BusinessCore.logic.vehicles
 
         //TODO: Need to add the Connegtion manager
         //TODO: See if going with the Abstrac Factory or for now go directly to a SQL Connection and after make the refactoring
-        public void Insert(IConnection conn, VOVheicle VOUauxVehicle)
+        public void Insert(SqlConnection conn, VOVheicle VOUauxVehicle)
         {
             Queries queries = new Queries();
             string insertUser = queries.InsertUser();
-            NpgsqlCommand insertCommand = new NpgsqlCommand(insertUser, conn);
+            SqlCommand insertCommand = new SqlCommand(insertUser, conn);
             insertCommand.Parameters.Add(
-                new NpgsqlParameter()
+                new SqlParameter()
                 {
                     ParameterName = "@email",
                     DbType = System.Data.DbType.String,
-                    Value = VOUauxVehicle.Email
+                    //TODO: Change based on Vehicle parameters
+                    Value = ""
                 }
                 );
             insertCommand.Parameters.Add(
-                new NpgsqlParameter()
+                new SqlParameter()
                 {
                     ParameterName = "@password",
                     DbType = System.Data.DbType.String,
-                    Value = VOUauxVehicle.Password
+                    //TODO: Change based on Vehicle parameters
+                    Value = ""
                 }
                 );
-            insertCommand.Parameters.Add(
-                new NpgsqlParameter()
-                {
-                    //See how to cast enum in a proper way
-                    ParameterName = "@type",
-                    DbType = System.Data.DbType.String,
-                    Value = LogicaHelpers.ParseEnumUSerTypeToString(VOUauxVehicle.Type)
-                }
-                ); ;
             insertCommand.ExecuteNonQuery();
         }
-        public bool Member(IConnection conn, VOVheicle auxVheicle)
+        public bool Member(SqlConnection conn, VOVheicle auxVheicle)
         {
             bool existe = false;
             if (Find(conn, auxVheicle) != null)
@@ -57,11 +51,11 @@ namespace BusinessCore.logic.vehicles
             return existe;
         }
 
-        public Vehicle Find(IConnection conn, VOVheicle auxVheicle )
+        public Vehicle Find(SqlConnection conn, VOVheicle auxVheicle )
         {
             Vehicle reponse = null;
 
-            return response;
+            return reponse;
         }
     }
 }

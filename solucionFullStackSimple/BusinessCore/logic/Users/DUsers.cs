@@ -48,14 +48,14 @@ namespace BusinessCore.logic.Users
             insertCommand.ExecuteNonQuery();
         }
 
-        public bool Member(SQLConnection conn, VOUser voU)
+        public bool Member(SqlConnection conn, VOUser voU)
         {
             bool existe = false;
             if (Find(conn, voU) != null)
                 existe = true;
             return existe;
         }
-        public User Find(SQLConnection conn, VOUser voU)
+        public User Find(SqlConnection conn, VOUser voU)
         {
             User response = null;
             Queries queries = new Queries();
@@ -91,7 +91,7 @@ namespace BusinessCore.logic.Users
             return response;
         }
 
-        public void Delete(SQLConnection conn, VOUser VOUser)
+        public void Delete(SqlConnection conn, VOUser VOUser)
         {
             Queries consultas = new Queries();
             string deleteIntegrante = consultas.DeleteUser();
